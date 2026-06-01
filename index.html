@@ -1,422 +1,609 @@
-<html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Geeta Siddramayya Math — AI &amp; Robotics Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Geeta Siddramayya Math — AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --navy:  #0f1b2d;
-    --navy2: #172236;
-    --navy3: #1d2b40;
-    --cream: #f0ebe0;
-    --gold:  #c9a84c;
-    --gold2: #e6c96a;
-    --teal:  #2a9d8f;
-    --muted: #8a9ab5;
-    --text:  #d8e2f0;
-    --border: rgba(201,168,76,0.18);
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans:  'DM Sans', sans-serif;
-    --mono:  'DM Mono', monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--navy);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+:root {
+  --cream: #faf6f0;
+  --cream2: #f3ede3;
+  --cream3: #ede4d6;
+  --gold: #b8965a;
+  --gold2: #d4a96a;
+  --gold-light: #f0d9b5;
+  --brown: #6b4f35;
+  --text: #2c1f12;
+  --text2: #5c4a35;
+  --text3: #8c7a65;
+  --border: rgba(184,150,90,0.2);
+  --border2: rgba(184,150,90,0.4);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 4rem;height:62px;background:rgba(15,27,45,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-  .nav-brand{display:flex;align-items:center;gap:.75rem;}
-  .nav-init{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:.9rem;color:var(--navy);}
-  .nav-name{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream);letter-spacing:.02em;}
-  .nav-links{display:flex;gap:2.2rem;list-style:none;}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
-  .nav-links a:hover{color:var(--gold);}
+/* Shimmer keyframe for glitter */
+@keyframes shimmer {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sparkle {
+  0%,100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
 
-  /* HERO */
-  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 360px;gap:4rem;align-items:center;padding:8rem 4rem 5rem;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
-  .hero-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.4rem;animation:up .5s ease both;}
-  .ey-line{width:36px;height:1px;background:var(--gold);opacity:.7;}
-  .ey-text{font-family:var(--mono);font-size:.7rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;}
-  .hero h1{font-family:var(--serif);font-size:3.6rem;font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--cream);margin-bottom:.2rem;animation:up .6s ease .1s both;}
-  .hero h1 em{font-style:italic;color:var(--gold);}
-  .hero-role{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--muted);margin-bottom:1.4rem;animation:up .6s ease .2s both;}
-  .hero-desc{font-size:.9rem;color:var(--muted);line-height:1.85;max-width:500px;margin-bottom:2.2rem;animation:up .6s ease .3s both;}
-  .hero-actions{display:flex;gap:1rem;animation:up .6s ease .4s both;}
-  .btn{padding:.65rem 1.7rem;font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:all .2s;border:none;cursor:pointer;}
-  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
-  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.35);}
-  .btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(255,255,255,.18);}
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.glitter-text {
+  background: linear-gradient(135deg, #b8965a 0%, #e8c97a 25%, #b8965a 50%, #f0d9b5 75%, #b8965a 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
 
-  /* HERO CARD */
-  .hcard{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:2rem;animation:up .7s ease .5s both;position:relative;overflow:hidden;}
-  .hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal));}
-  .hc-av{width:54px;height:54px;background:linear-gradient(135deg,var(--gold),var(--teal));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:1rem;}
-  .hc-name{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:.15rem;}
-  .hc-role{font-size:.72rem;color:var(--gold);letter-spacing:.07em;font-family:var(--mono);margin-bottom:1.3rem;}
-  .hc-divider{height:1px;background:var(--border);margin-bottom:1.1rem;}
-  .hc-row{display:flex;justify-content:space-between;align-items:baseline;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem;}
-  .hc-row:last-child{border-bottom:none;}
-  .hc-lbl{color:var(--muted);}
-  .hc-val{color:var(--cream);font-weight:600;text-align:right;font-size:.8rem;}
-  .hc-val.g{color:var(--gold2);}
-  .dot{display:inline-block;width:6px;height:6px;background:#3ecf8e;border-radius:50%;margin-right:5px;animation:pulse-dot 2s infinite;}
-  @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(62,207,142,.4);}50%{box-shadow:0 0 0 5px rgba(62,207,142,0);}}
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,246,240,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; letter-spacing: 0.5px;
+  color: var(--text2); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  font-size: 12px; padding: 8px 20px; border-radius: 100px;
+  background: var(--gold); color: #fff; border: none;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--brown); }
 
-  /* SECTIONS */
-  .sw{position:relative;z-index:1;}
-  .sw.alt{background:var(--navy2);}
-  .si{max-width:1200px;margin:0 auto;padding:5rem 4rem;}
-  .sh{display:flex;align-items:baseline;gap:1.4rem;margin-bottom:2.8rem;}
-  .sn{font-family:var(--mono);font-size:.68rem;color:var(--gold);letter-spacing:.12em;}
-  .st{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--cream);letter-spacing:-.01em;}
-  .sl{flex:1;height:1px;background:var(--border);}
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 40px 60px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,169,106,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-sparkles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.sparkle {
+  position: absolute; width: 4px; height: 4px;
+  border-radius: 50%; background: var(--gold2);
+  animation: sparkle 2s ease-in-out infinite;
+}
+.s1{top:15%;left:12%;animation-delay:0s;}
+.s2{top:25%;left:80%;animation-delay:0.4s;}
+.s3{top:60%;left:8%;animation-delay:0.8s;}
+.s4{top:70%;left:88%;animation-delay:1.2s;}
+.s5{top:40%;left:92%;animation-delay:0.6s;}
+.s6{top:80%;left:20%;animation-delay:1s;}
+.s7{top:10%;left:50%;animation-delay:1.4s;}
+.s8{top:88%;left:60%;animation-delay:0.2s;}
 
-  /* ABOUT */
-  .ag{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-  .at p{color:var(--muted);line-height:1.85;font-size:.9rem;margin-bottom:1rem;}
-  .at p strong{color:var(--text);font-weight:600;}
-  .ahi{display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem;}
-  .hi{display:flex;align-items:center;gap:.8rem;font-size:.86rem;color:var(--text);}
-  .hi-icon{width:30px;height:30px;background:rgba(201,168,76,.1);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;}
+.avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cream3), var(--gold-light));
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 600; color: var(--gold);
+  margin: 0 auto 28px;
+  animation: float 4s ease-in-out infinite;
+}
+.open-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; letter-spacing: 1px;
+  padding: 5px 14px; border-radius: 100px;
+  background: rgba(76,175,80,0.08);
+  border: 1px solid rgba(76,175,80,0.3);
+  color: #2e7d32; margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.open-dot { width: 6px; height: 6px; border-radius: 50%; background: #4caf50; }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 300; line-height: 1.1;
+  color: var(--text); margin-bottom: 8px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-role {
+  font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 20px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero-desc {
+  font-size: 16px; color: var(--text2); max-width: 540px;
+  margin: 0 auto 32px; line-height: 1.8;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-btns {
+  display: flex; gap: 14px; justify-content: center;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.btn-gold {
+  padding: 12px 28px; border-radius: 100px;
+  background: var(--gold); color: #fff;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-gold:hover { background: var(--brown); transform: translateY(-1px); }
+.btn-outline-gold {
+  padding: 12px 28px; border-radius: 100px;
+  background: transparent; color: var(--gold);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  border: 1.5px solid var(--gold); cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-outline-gold:hover { background: var(--gold-light); }
 
-  /* SKILLS */
-  .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-  .sc{background:var(--navy3);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.4rem;transition:all .25s;}
-  .sc:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 28px rgba(201,168,76,.1);}
-  .sk-h{display:flex;align-items:center;gap:.7rem;margin-bottom:.65rem;}
-  .sk-i{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
-  .sk-i.t{background:rgba(42,157,143,.15);}
-  .sk-i.g{background:rgba(201,168,76,.12);}
-  .sk-n{font-size:.88rem;font-weight:600;color:var(--cream);}
-  .sk-p{font-size:.8rem;color:var(--muted);line-height:1.65;}
-  .tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.7rem;}
-  .chip{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);color:var(--muted);font-family:var(--mono);font-size:.66rem;padding:.18rem .5rem;border-radius:3px;letter-spacing:.04em;}
+/* STATS */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--cream2);
+}
+.stat {
+  padding: 28px 20px; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 600;
+  background: linear-gradient(135deg, #b8965a, #e8c97a, #b8965a);
+  background-size: 200% 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease infinite;
+}
+.stat-lbl { font-size: 12px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
 
-  /* PROJECTS */
-  .pl{display:flex;flex-direction:column;gap:1.75rem;}
-  .pc{background:var(--navy3);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:2rem 2.4rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;transition:all .25s;}
-  .pc:hover{border-color:rgba(201,168,76,.3);box-shadow:0 12px 40px rgba(0,0,0,.25);transform:translateX(4px);}
-  .pn{font-family:var(--mono);font-size:.67rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.5rem;}
-  .pt{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--cream);margin-bottom:.5rem;line-height:1.25;}
-  .pd{font-size:.86rem;color:var(--muted);line-height:1.75;margin-bottom:1.1rem;}
-  .pb{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
-  .pb li{font-size:.82rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6;}
-  .pb li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:.68rem;top:.18rem;}
-  .ptags{align-self:start;}
-  .ptags .tags{flex-direction:column;align-items:flex-end;}
+/* SECTIONS */
+section { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
+.sec-label {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 8px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px); font-weight: 300;
+  color: var(--text); margin-bottom: 40px; line-height: 1.2;
+}
+.sec-divider {
+  width: 48px; height: 1px; background: var(--gold);
+  margin: 16px 0 40px;
+}
 
-  /* EXPERIENCE */
-  .el{display:flex;flex-direction:column;}
-  .ei{display:grid;grid-template-columns:150px 1fr;gap:2.5rem;padding:2.2rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
-  .ei:last-child{border-bottom:none;}
-  .ed{font-family:var(--mono);font-size:.7rem;color:var(--gold);letter-spacing:.07em;padding-top:.3rem;line-height:1.6;}
-  .er{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:.2rem;}
-  .ec{font-size:.8rem;color:var(--teal);font-weight:500;margin-bottom:.9rem;letter-spacing:.03em;}
-  .ebl{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
-  .ebl li{font-size:.85rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6;}
-  .ebl li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:.62rem;top:.22rem;}
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.about-text p { font-size: 15px; color: var(--text2); line-height: 1.9; margin-bottom: 16px; }
+.about-text strong { color: var(--brown); font-weight: 500; }
+.about-facts { display: flex; flex-direction: column; gap: 14px; }
+.fact {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 18px; border-radius: 12px;
+  background: var(--cream2); border: 1px solid var(--border);
+}
+.fact-icon { font-size: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.fact-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
+.fact-text strong { color: var(--text); font-weight: 500; display: block; }
 
-  /* EDUCATION */
-  .edug{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
-  .educard{background:var(--navy3);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.6rem;transition:all .25s;}
-  .educard:hover{border-color:var(--border);transform:translateY(-3px);}
-  .edu-yr{font-family:var(--mono);font-size:.67rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.55rem;}
-  .edu-deg{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:.35rem;line-height:1.3;}
-  .edu-sch{font-size:.8rem;color:var(--muted);margin-bottom:.9rem;line-height:1.5;}
-  .cpill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(201,168,76,.1);border:1px solid var(--border);color:var(--gold2);font-family:var(--mono);font-size:.7rem;padding:.22rem .7rem;border-radius:4px;}
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.skill-card {
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-card:hover { border-color: var(--gold2); transform: translateY(-2px); }
+.skill-icon { font-size: 20px; color: var(--gold); margin-bottom: 10px; }
+.skill-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 11px; padding: 3px 10px; border-radius: 100px;
+  background: var(--cream3); color: var(--brown);
+  border: 1px solid var(--border2); font-family: 'DM Mono', monospace;
+}
 
-  /* CERTS */
-  .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:.8rem;}
-  .crow{display:flex;align-items:center;gap:.9rem;padding:.85rem 1rem;background:var(--navy3);border:1px solid rgba(255,255,255,.05);border-radius:8px;transition:all .2s;}
-  .crow:hover{border-color:var(--border);transform:translateX(3px);}
-  .cdot{width:7px;height:7px;background:var(--gold);border-radius:50%;flex-shrink:0;}
-  .cname{font-size:.82rem;color:var(--text);font-weight:500;}
-  .corg{font-size:.72rem;color:var(--muted);margin-top:.1rem;font-family:var(--mono);}
+/* PROJECTS */
+.proj-grid { display: flex; flex-direction: column; gap: 20px; }
+.proj-card {
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px 28px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.proj-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--gold);
+}
+.proj-card:hover { border-color: var(--gold2); transform: translateX(4px); }
+.proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.proj-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--text); }
+.proj-year { font-size: 11px; padding: 3px 12px; border-radius: 100px; background: var(--gold-light); color: var(--brown); font-weight: 500; }
+.proj-badge { font-size: 10px; padding: 2px 10px; border-radius: 100px; background: rgba(184,150,90,0.1); color: var(--gold); border: 1px solid var(--border2); margin-left: 8px; }
+.proj-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
+.proj-metric { display: inline-flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); background: rgba(184,150,90,0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 12px; margin-right: 6px; }
 
-  /* CONTACT */
-  .cbox{background:linear-gradient(135deg,var(--navy2) 0%,var(--navy3) 100%);border:1px solid var(--border);border-radius:20px;padding:3.5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;overflow:hidden;}
-  .cbox::before{content:'';position:absolute;top:-80px;right:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);pointer-events:none;}
-  .ch{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:.9rem;}
-  .ch em{color:var(--gold);font-style:italic;}
-  .cs{font-size:.88rem;color:var(--muted);line-height:1.75;}
-  .cl-list{display:flex;flex-direction:column;gap:.8rem;}
-  .clink{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;text-decoration:none;color:var(--text);font-size:.86rem;font-weight:500;transition:all .2s;}
-  .clink:hover{background:rgba(201,168,76,.08);border-color:var(--gold);color:var(--gold);transform:translateX(4px);}
-  .ci{width:34px;height:34px;background:rgba(201,168,76,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+/* EXPERIENCE TIMELINE */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+.tl-item { position: relative; margin-bottom: 40px; }
+.tl-dot { position: absolute; left: -28px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--cream2); border: 2px solid var(--gold); }
+.tl-date { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-family: 'DM Mono', monospace; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--text); }
+.tl-company { font-size: 13px; color: var(--text3); margin-bottom: 10px; }
+.tl-desc { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.tl-desc li { margin-bottom: 4px; padding-left: 16px; position: relative; }
+.tl-desc li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
 
-  footer{border-top:1px solid rgba(255,255,255,.06);padding:1.6rem 4rem;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;position:relative;z-index:1;font-size:.74rem;color:var(--muted);font-family:var(--mono);letter-spacing:.04em;}
+/* EDUCATION */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.edu-card {
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px;
+}
+.edu-year { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 1px; margin-bottom: 8px; }
+.edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.edu-school { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
+.edu-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.edu-badge { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: var(--gold-light); color: var(--brown); font-weight: 500; }
 
-  @keyframes up{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+/* PUBLICATION */
+.pub-card {
+  background: var(--cream2); border: 1px solid var(--border2);
+  border-radius: 16px; padding: 24px 28px;
+  position: relative; overflow: hidden;
+}
+.pub-card::after {
+  content: '"'; font-family: 'Cormorant Garamond', serif;
+  font-size: 120px; color: rgba(184,150,90,0.06);
+  position: absolute; top: -20px; right: 20px; line-height: 1;
+}
+.pub-venue { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.pub-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+.pub-note { font-size: 12px; color: var(--text3); font-style: italic; }
 
-  @media(max-width:900px){
-    nav{padding:0 1.5rem;}
-    .nav-links{display:none;}
-    .hero{grid-template-columns:1fr;padding:7rem 1.5rem 3rem;gap:2rem;}
-    .hero h1{font-size:2.6rem;}
-    .si{padding:3.5rem 1.5rem;}
-    .ag,.edug,.cbox{grid-template-columns:1fr;gap:2rem;}
-    .sg{grid-template-columns:1fr 1fr;}
-    .pc{grid-template-columns:1fr;}
-    .ei{grid-template-columns:1fr;gap:.5rem;}
-    footer{flex-direction:column;gap:.5rem;text-align:center;}
-  }
+/* CERTS */
+.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.cert-card {
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 16px;
+  transition: border-color 0.2s;
+}
+.cert-card:hover { border-color: var(--gold2); }
+.cert-issuer { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.cert-name { font-size: 13px; color: var(--text); font-weight: 400; line-height: 1.4; }
+.cert-date { font-size: 11px; color: var(--text3); margin-top: 4px; font-family: 'DM Mono', monospace; }
+
+/* CONTACT */
+.contact-section {
+  background: var(--cream2);
+  border-top: 1px solid var(--border);
+  padding: 80px 40px;
+  text-align: center;
+}
+.contact-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 52px); font-weight: 300;
+  margin-bottom: 12px; color: var(--text);
+}
+.contact-section h2 em { font-style: italic; }
+.contact-sub { font-size: 15px; color: var(--text2); max-width: 440px; margin: 0 auto 36px; }
+.contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.contact-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 100px;
+  background: var(--cream); border: 1px solid var(--border2);
+  color: var(--text2); font-size: 13px; text-decoration: none;
+  transition: all 0.2s;
+}
+.contact-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.contact-link i { font-size: 16px; }
+
+/* FOOTER */
+footer {
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 12px; color: var(--text3);
+  border-top: 1px solid var(--border);
+  background: var(--cream);
+}
+
+/* SECTION BG ALT */
+.bg-alt { background: var(--cream2); }
+.full-section { max-width: 100%; padding: 80px 0; }
+.full-section > .inner { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  section { padding: 60px 20px; }
+  .about-grid, .edu-grid, .skills-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .certs-grid { grid-template-columns: repeat(2,1fr); }
+  .hero { padding: 80px 20px 60px; }
+  .contact-section { padding: 60px 20px; }
+  .full-section > .inner { padding: 0 20px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-brand">
-    <div class="nav-init">GM</div>
-    <span class="nav-name">Geeta Siddramayya Math</span>
+  <span class="nav-logo">GM</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="https://github.com/geetamath" target="_blank" style="color:var(--gold);display:flex;align-items:center;gap:.35rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg> GitHub</a></li>
-  </ul>
+  <a href="mailto:gsmvjp@gmail.com" class="nav-cta">Hire Me</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div>
-    <div class="hero-eyebrow">
-      <div class="ey-line"></div>
-      <span class="ey-text">SAP Analyst · AI Engineer · Robotics · Computer Vision</span>
-    </div>
-    <h1>Geeta<br><em>Siddramayya</em><br>Math</h1>
-    <p class="hero-role">M.Tech in Robotics &amp; Artificial Intelligence, MSRIT Bangalore &nbsp;·&nbsp; Former SAP Analyst, TCS</p>
-    <p class="hero-desc">Building intelligent systems at the intersection of deep learning, computer vision, and robotics. Former TCS engineer with 1.5 years of enterprise experience — now focused on AI research and real-world deployment.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-gold">View Projects</a>
-      <a href="#contact" class="btn btn-ghost">Contact Me</a>
-    </div>
+<section class="hero" id="home">
+  <div class="hero-sparkles">
+    <div class="sparkle s1"></div><div class="sparkle s2"></div>
+    <div class="sparkle s3"></div><div class="sparkle s4"></div>
+    <div class="sparkle s5"></div><div class="sparkle s6"></div>
+    <div class="sparkle s7"></div><div class="sparkle s8"></div>
   </div>
+  <div class="avatar">GM</div>
+  <div class="open-badge"><span class="open-dot"></span>Open to Work</div>
+  <h1>Geeta <em>Siddramayya</em> Math</h1>
+  <p class="hero-role">AI Engineer &nbsp;·&nbsp; Agentic AI &amp; LLMs &nbsp;·&nbsp; Computer Vision &nbsp;·&nbsp; MLOps</p>
+  <p class="hero-desc">M.Tech (Robotics &amp; AI) engineer building intelligent systems at the intersection of deep learning, computer vision, and agentic AI. IEEE conference presenter. Immediately available to join.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-gold">View Projects</a>
+    <a href="#contact" class="btn-outline-gold">Get in Touch</a>
+  </div>
+</section>
 
-  <div class="hcard">
-    <div class="hc-av">GM</div>
-    <div class="hc-name">Geeta Siddramayya Math</div>
-    <div class="hc-role">AI / ROBOTICS / COMPUTER VISION / ANALYST</div>
-    <div class="hc-divider"></div>
-    <div class="hc-row"><span class="hc-lbl">Location</span><span class="hc-val">Bangalore, India</span></div>
-    <div class="hc-row"><span class="hc-lbl">M.Tech CGPA</span><span class="hc-val g">9.24 / 10</span></div>
-    <div class="hc-row"><span class="hc-lbl">B.E. Rank</span><span class="hc-val g">2nd Rank Holder</span></div>
-    <div class="hc-row"><span class="hc-lbl">Industry Exp.</span><span class="hc-val">1.5 yrs · TCS</span></div>
-    <div class="hc-row"><span class="hc-lbl">Research</span><span class="hc-val">CMTI Bangalore</span></div>
-    <div class="hc-row"><span class="hc-lbl">Certifications</span><span class="hc-val">10+ (IBM, IIT, NPTEL)</span></div>
-    <div class="hc-row"><span class="hc-lbl">Status</span><span class="hc-val"><span class="dot"></span>Open to Work</span></div>
-    <div class="hc-row"><span class="hc-lbl">Email</span><span class="hc-val" style="font-size:.72rem" id="hero-email">gsmvjp@gmail.com</span></div>
-  </div>
+<div class="stats">
+  <div class="stat"><div class="stat-val">9.24</div><div class="stat-lbl">M.Tech CGPA</div></div>
+  <div class="stat"><div class="stat-val">1.5yr</div><div class="stat-lbl">Industry Exp.</div></div>
+  <div class="stat"><div class="stat-val">10+</div><div class="stat-lbl">Certificates</div></div>
+  <div class="stat"><div class="stat-val">IEEE</div><div class="stat-lbl">Conference</div></div>
 </div>
 
-<!-- ABOUT -->
-<div class="sw" id="about">
-  <div class="si">
-    <div class="sh"><span class="sn">01</span><h2 class="st">About Me</h2><div class="sl"></div></div>
-    <div class="ag">
-      <div class="at">
-        <p>I am a <strong>SAP Analyst, AI Engineer and Robotics enthusiast</strong>, currently pursuing my M.Tech in Robotics &amp; Artificial Intelligence at M.S. Ramaiah Institute of Technology, Bangalore, with a CGPA of <strong>9.24/10</strong>. I sincerely enjoy working at the intersection of deep learning, computer vision, and autonomous systems, and I strive every day to grow both as a researcher and as a professional.</p>
-        <p>My most recent research was carried out at <strong>CMTI (Central Manufacturing Technology Institute)</strong>, Bangalore, where I had the privilege of working alongside government scientists to develop a deep learning-based drone detection and tracking system using YOLOv8. It was a deeply rewarding experience that helped me understand how academic AI research can be meaningfully applied in real-world, industrial settings.</p>
-        <p>Before beginning my master's, I had the opportunity to work for <strong>1.5 years at Tata Consultancy Services (TCS)</strong> as an SAP Basis Analyst, managing cloud infrastructure and enterprise systems. That experience taught me the value of reliability, teamwork, and attention to detail — qualities I now carry into my AI and robotics work with great appreciation.</p>
-      </div>
-      <div class="ahi">
-        <div class="hi"><div class="hi-icon">🎓</div><span>M.Tech Robotics &amp; AI · MSRIT Bangalore · CGPA 9.24/10 (3rd Rank)</span></div>
-        <div class="hi"><div class="hi-icon">🏆</div><span>2nd Rank Holder · B.E. in Electrical &amp; Electronics Engineering</span></div>
-        <div class="hi"><div class="hi-icon">🔬</div><span>Research Intern · CMTI Bangalore · Computer Vision &amp; Deep Learning</span></div>
-        <div class="hi"><div class="hi-icon">💼</div><span>1.5 Years · Tata Consultancy Services · SAP Cloud Infrastructure</span></div>
-        <div class="hi"><div class="hi-icon">📜</div><span>10+ Certifications · IBM · Microsoft · IIT Roorkee · NPTEL · Infosys</span></div>
-        <div class="hi"><div class="hi-icon">🌐</div><span>Languages · Kannada · English · Hindi</span></div>
-      </div>
+<section id="about">
+  <p class="sec-label">Introduction</p>
+  <h2 class="sec-title">About <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Me</em></h2>
+  <div class="sec-divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am an <strong>AI Engineer and Robotics enthusiast</strong>, completing my M.Tech in Robotics &amp; Artificial Intelligence at M.S. Ramaiah Institute of Technology, Bangalore, with a CGPA of <strong>9.24/10</strong>.</p>
+      <p>My recent work at <strong>Tata Communications (Novamesh)</strong> involved building cloud-native agentic AI products — RAG pipelines, LLM APIs, and multi-agent orchestration for enterprise use cases.</p>
+      <p>Before my masters, I spent <strong>1.5 years at TCS</strong> as an SAP Basis Analyst — experience that taught me reliability, enterprise-scale thinking, and the value of clean systems.</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact"><i class="ti ti-map-pin fact-icon"></i><div class="fact-text"><strong>Location</strong>Bangalore, India</div></div>
+      <div class="fact"><i class="ti ti-school fact-icon"></i><div class="fact-text"><strong>M.Tech CGPA</strong>9.24/10 · Third Rank, MSRIT</div></div>
+      <div class="fact"><i class="ti ti-trophy fact-icon"></i><div class="fact-text"><strong>B.E. Rank</strong>Second Rank Holder, BEC Bagalkot</div></div>
+      <div class="fact"><i class="ti ti-briefcase fact-icon"></i><div class="fact-text"><strong>Industry Exp.</strong>1.5 yrs · Tata Consultancy Services</div></div>
+      <div class="fact"><i class="ti ti-mail fact-icon"></i><div class="fact-text"><strong>Email</strong>gsmvjp@gmail.com</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- SKILLS -->
-<div class="sw alt" id="skills">
-  <div class="si">
-    <div class="sh"><span class="sn">02</span><h2 class="st">Technical Skills</h2><div class="sl"></div></div>
-    <div class="sg">
-      <div class="sc"><div class="sk-h"><div class="sk-i t">🤖</div><span class="sk-n">AI &amp; Deep Learning</span></div><p class="sk-p">Training and deploying neural networks for real-world perception and classification tasks.</p><div class="tags"><span class="chip">PyTorch</span><span class="chip">YOLOv8</span><span class="chip">Deep Learning</span><span class="chip">ML</span></div></div>
-      <div class="sc"><div class="sk-h"><div class="sk-i g">👁️</div><span class="sk-n">Computer Vision</span></div><p class="sk-p">End-to-end visual pipelines — detection, tracking, classification, real-time processing.</p><div class="tags"><span class="chip">OpenCV</span><span class="chip">Object Detection</span><span class="chip">Tracking</span></div></div>
-      <div class="sc"><div class="sk-h"><div class="sk-i t">🦾</div><span class="sk-n">Robotics &amp; Simulation</span></div><p class="sk-p">Robotic systems design, digital twins, and hardware-software interfacing.</p><div class="tags"><span class="chip">MATLAB</span><span class="chip">Arduino</span><span class="chip">Sensors</span><span class="chip">Simulation</span></div></div>
-      <div class="sc"><div class="sk-h"><div class="sk-i g">✨</div><span class="sk-n">Generative AI</span></div><p class="sk-p">Leveraging LLMs and gen AI tools for engineering and application workflows.</p><div class="tags"><span class="chip">ChatGPT</span><span class="chip">Claude AI</span><span class="chip">Gemini</span><span class="chip">Prompt Eng.</span></div></div>
-      <div class="sc"><div class="sk-h"><div class="sk-i t">💻</div><span class="sk-n">Programming</span></div><p class="sk-p">Clean, efficient code for AI research, data processing, and system automation.</p><div class="tags"><span class="chip">Python</span><span class="chip">C</span><span class="chip">MATLAB</span><span class="chip">Google Colab</span></div></div>
-      <div class="sc"><div class="sk-h"><div class="sk-i g">☁️</div><span class="sk-n">Cloud &amp; Enterprise</span></div><p class="sk-p">1.5 years managing SAP cloud infrastructure at enterprise scale with TCS.</p><div class="tags"><span class="chip">SAP Basis</span><span class="chip">System Admin</span><span class="chip">DB Management</span><span class="chip">Process Mining</span></div></div>
+<div class="bg-alt">
+<section id="skills">
+  <p class="sec-label">Expertise</p>
+  <h2 class="sec-title">Technical <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Skills</em></h2>
+  <div class="sec-divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-brain"></i></div>
+      <div class="skill-name">AI &amp; Deep Learning</div>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span><span class="tag">NLP</span><span class="tag">Scikit-learn</span><span class="tag">ML</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-eye"></i></div>
+      <div class="skill-name">Computer Vision</div>
+      <div class="tags"><span class="tag">YOLOv8</span><span class="tag">YOLOv11</span><span class="tag">OpenCV</span><span class="tag">BoT-SORT</span><span class="tag">MOT</span><span class="tag">Segmentation</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-robot"></i></div>
+      <div class="skill-name">Agentic AI &amp; LLMs</div>
+      <div class="tags"><span class="tag">RAG</span><span class="tag">LLM APIs</span><span class="tag">Groq</span><span class="tag">Llama 3.3</span><span class="tag">Multi-Agent</span><span class="tag">Prompt Eng.</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-cloud"></i></div>
+      <div class="skill-name">MLOps &amp; Cloud</div>
+      <div class="tags"><span class="tag">Docker</span><span class="tag">GCP</span><span class="tag">Git</span><span class="tag">REST APIs</span><span class="tag">Power BI</span><span class="tag">PostgreSQL</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-code"></i></div>
+      <div class="skill-name">Programming</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">React</span><span class="tag">C</span><span class="tag">MATLAB</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-chart-bar"></i></div>
+      <div class="skill-name">Data &amp; Analysis</div>
+      <div class="tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Statistical Analysis</span><span class="tag">Excel</span><span class="tag">Power BI</span></div>
     </div>
   </div>
+</section>
 </div>
 
-<!-- PROJECTS -->
-<div class="sw" id="projects">
-  <div class="si">
-    <div class="sh"><span class="sn">03</span><h2 class="st">Key Projects</h2><div class="sl"></div></div>
-    <div class="pl">
-      <div class="pc">
-        <div>
-          <div class="pn">PROJECT 01</div>
-          <div class="pt">AI Business Intelligence Agent</div>
-          <p class="pd">• Built and deployed full-stack AI web app answering natural language queries on live Monday.com project data using Groq LLM
-
-</p>
-          <ul class="pb">
-            <li>Engineered compression pipeline shrinking token payload from 60K to 5K tokens, resolving LLM API rate limits</li>
-            <li>Stores query history in PostgreSQL for reference</li>
-            <li>Live at "https://insight-engine--gsmvjp.replit.app/"</li>
-          </ul>
-        </div>
-        <div class="ptags"><div class="tags" style="flex-direction:column;align-items:flex-end"><span class="chip">Groq LLM (Llama 3.3 70B)</span><span class="chip">GraphQL</span><span class="chip">PostgreSQL</span><span class="chip">Replit</span></div></div>
-      </div><div class="pc">
-        <div>
-          <div class="pn">PROJECT 02</div>
-          <div class="pt">Deep Learning Based Drone Detection &amp; Tracking System</div>
-          <p class="pd">An end-to-end automated surveillance pipeline developed during a research internship at CMTI, Bangalore — in collaboration with government scientists. Focused on real-time detection and multi-object tracking for defense-adjacent applications.</p>
-          <ul class="pb">
-            <li>Built complete detection and tracking pipeline with YOLOv8 for automated drone surveillance</li>
-            <li>Optimised algorithm for smooth real-time tracking with significantly reduced false positives</li>
-            <li>Deployed in an industrial R&amp;D environment alongside CMTI government scientists</li>
-          </ul>
-        </div>
-        <div class="ptags"><div class="tags" style="flex-direction:column;align-items:flex-end"><span class="chip">PyTorch</span><span class="chip">YOLOv8</span><span class="chip">OpenCV</span><span class="chip">Deep Learning</span><span class="chip">Python</span></div></div>
+<section id="projects">
+  <p class="sec-label">Work</p>
+  <h2 class="sec-title">Key <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Projects</em></h2>
+  <div class="sec-divider"></div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-header">
+        <span class="proj-title">AI Pharmaceutical Quality Inspection System <span class="proj-badge">Industry-Funded</span></span>
+        <span class="proj-year">2026</span>
       </div>
-      <div class="pc">
-        <div>
-          <div class="pn">PROJECT 03</div>
-          <div class="pt">Robot Gripper Digital Twin</div>
-          <p class="pd">A real-time digital twin model for a robotic gripper system, enabling bidirectional synchronisation between the physical hardware and its simulation counterpart — for remote monitoring, virtual testing, and control.</p>
-          <ul class="pb">
-            <li>Developed digital twin model linking physical robotic gripper to a simulation model</li>
-            <li>Implemented bidirectional real-time data flow between hardware and virtual environment</li>
-            <li>Enabled virtual testing, remote state monitoring, and predictive maintenance</li>
-          </ul>
-        </div>
-        <div class="ptags"><div class="tags" style="flex-direction:column;align-items:flex-end"><span class="chip">MATLAB</span><span class="chip">Arduino</span><span class="chip">Sensors</span><span class="chip">Simulation</span></div></div>
+      <p class="proj-desc">Automated vial detection and defect classification system replacing manual inspection in pharmaceutical production. Built high-throughput real-time inference pipeline with precise product traceability.</p>
+      <div><span class="proj-metric"><i class="ti ti-chart-line" style="font-size:12px"></i> 96.9% mAP@0.5</span><span class="proj-metric"><i class="ti ti-check" style="font-size:12px"></i> Zero double-counting</span></div>
+      <div class="tags"><span class="tag">YOLOv11</span><span class="tag">OpenCV</span><span class="tag">BoT-SORT</span><span class="tag">Python</span><span class="tag">Deep Learning</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-header">
+        <span class="proj-title">AI Business Intelligence Agent</span>
+        <span class="proj-year">2026</span>
       </div>
+      <p class="proj-desc">Full-stack AI web app answering natural language queries on live Monday.com project data using Groq LLM. Engineered token compression pipeline and PostgreSQL query history storage.</p>
+      <div><span class="proj-metric"><i class="ti ti-arrow-down" style="font-size:12px"></i> 60K → 5K tokens</span><span class="proj-metric"><i class="ti ti-world" style="font-size:12px"></i> Live deployed</span></div>
+      <div class="tags"><span class="tag">Groq LLM</span><span class="tag">Llama 3.3 70B</span><span class="tag">GraphQL</span><span class="tag">PostgreSQL</span><span class="tag">Replit</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-header">
+        <span class="proj-title">Real-Time Drone Detection &amp; Tracking</span>
+        <span class="proj-year">2025</span>
+      </div>
+      <p class="proj-desc">End-to-end surveillance pipeline developed at CMTI, Govt. of India. Robust real-world performance across varying drone sizes, lighting conditions, and dynamic environments.</p>
+      <div><span class="proj-metric"><i class="ti ti-chart-line" style="font-size:12px"></i> 82.5% mAP@0.5</span><span class="proj-metric"><i class="ti ti-minus" style="font-size:12px"></i> 40% fewer false positives</span></div>
+      <div class="tags"><span class="tag">YOLOv8</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Kalman Filter</span><span class="tag">MOT</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- EXPERIENCE -->
-<div class="sw alt" id="experience">
-  <div class="si">
-    <div class="sh"><span class="sn">04</span><h2 class="st">Experience</h2><div class="sl"></div></div>
-    <div class="el">
-      <div class="ei">
-        <div class="ed">SEP 2025<br>OCT 2025</div>
-        <div>
-          <div class="er">Project Intern — Computer Vision &amp; Deep Learning</div>
-          <div class="ec">Central Manufacturing Technology Institute (CMTI), Bangalore</div>
-          <ul class="ebl">
-            <li>Developed deep learning-based drone detection and tracking system using YOLOv8 and OpenCV</li>
-            <li>Collaborated directly with government scientists and researchers in an industrial R&amp;D environment</li>
-            <li>Translated academic AI research into a real-world defense-adjacent deployment</li>
-          </ul>
-        </div>
-      </div>
-      <div class="ei">
-        <div class="ed">JAN 2021<br>JUN 2022</div>
-        <div>
-          <div class="er">Assistant Systems Engineer — SAP Basis Cloud Services</div>
-          <div class="ec">Tata Consultancy Services (TCS), Bangalore</div>
-          <ul class="ebl">
-            <li>Managed SAP system administration and cloud infrastructure for enterprise-scale clients</li>
-            <li>Resolved critical production incidents ensuring system stability and minimal downtime</li>
-            <li>Optimised database performance through proactive monitoring and analysis</li>
-            <li>Handled incident management and ticketing within cross-functional teams</li>
-          </ul>
-        </div>
-      </div>
+<div class="bg-alt">
+<section id="experience">
+  <p class="sec-label">Career</p>
+  <h2 class="sec-title">Professional <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Experience</em></h2>
+  <div class="sec-divider"></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Apr 2026 – Jun 2026</div>
+      <div class="tl-title">Project Intern – Agentic AI</div>
+      <div class="tl-company">Tata Communications Ltd (Novamesh) · Bangalore</div>
+      <ul class="tl-desc">
+        <li>Built cloud-native agentic AI products using Python, LLM APIs, RAG pipelines, and multi-agent orchestration</li>
+        <li>Implemented multi-agent workflows for autonomous decision-making across enterprise use cases</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Sep 2025 – Oct 2025</div>
+      <div class="tl-title">Project Intern – Computer Vision &amp; Deep Learning</div>
+      <div class="tl-company">CMTI, Govt. of India · Bangalore</div>
+      <ul class="tl-desc">
+        <li>Built real-time drone detection system using YOLOv8; achieved 82.5% mAP@0.5 on real-world surveillance data</li>
+        <li>Reduced false positives by 40% using multi-object tracking pipeline in complex cluttered environments</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Jan 2021 – Jun 2022</div>
+      <div class="tl-title">Assistant Systems Engineer – SAP Cloud</div>
+      <div class="tl-company">Tata Consultancy Services (TCS) · Bangalore</div>
+      <ul class="tl-desc">
+        <li>Managed SAP cloud infrastructure for enterprise clients; maintained 99% system uptime</li>
+        <li>Reduced production incidents by 30%; achieved 95% SLA compliance with cross-functional teams</li>
+        <li>Identified automation opportunities using data analysis, laying foundation for transition to AI/ML roles</li>
+      </ul>
     </div>
   </div>
+</section>
 </div>
 
-<!-- EDUCATION + CERTS -->
-<div class="sw" id="education">
-  <div class="si">
-    <div class="sh"><span class="sn">05</span><h2 class="st">Education</h2><div class="sl"></div></div>
-    <div class="edug">
-      <div class="educard">
-        <div class="edu-yr">2024 — 2026</div>
-        <div class="edu-deg">M.Tech in Robotics &amp; Artificial Intelligence</div>
-        <div class="edu-sch">M.S. Ramaiah Institute of Technology, Bangalore, India</div>
-        <span class="cpill">⭐ CGPA 9.24 / 10 . Third Rank Holder</span>
-      </div>
-      <div class="educard">
-        <div class="edu-yr">2016 — 2020</div>
-        <div class="edu-deg">B.E. in Electrical &amp; Electronics Engineering</div>
-        <div class="edu-sch">Basaveshwar Engineering College (Autonomous), Bagalkot, Karnataka</div>
-        <span class="cpill">🏆 CGPA 8.58 / 10 · Second Rank Holder</span>
-      </div>
+<section id="education">
+  <p class="sec-label">Academic</p>
+  <h2 class="sec-title">Education &amp; <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Credentials</em></h2>
+  <div class="sec-divider"></div>
+  <div class="edu-grid" style="margin-bottom:40px">
+    <div class="edu-card">
+      <div class="edu-year">2024 — 2026</div>
+      <div class="edu-degree">M.Tech – Robotics &amp; Artificial Intelligence</div>
+      <div class="edu-school">M.S. Ramaiah Institute of Technology, Bangalore</div>
+      <div class="edu-badges"><span class="edu-badge">CGPA 9.24/10</span><span class="edu-badge">Third Rank</span></div>
     </div>
-
-    <div style="margin-top:3rem">
-      <div class="sh" style="margin-bottom:1.5rem"><span class="sn">05.1</span><h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--cream)">Certifications &amp; Training</h3><div class="sl"></div></div>
-      <div class="cg">
-        <div class="crow"><div class="cdot"></div><div><div class="cname">Academic Process Mining Fundamentals (Badge + Certificate)</div><div class="corg">Celonis · Mar 2026</div></div></div>
-        <div class="crow"><div class="cdot"></div><div><div class="cname">Machine Learning with Python — Developer Badge Level-1</div><div class="corg">IBM · Jun 2025</div></div></div><div class="crow"><div class="cdot"></div><div><div class="cname">Generative AI Foundations</div><div class="corg">Microsoft &amp; Upgrade · Jul 2025</div></div></div>
-        <div class="crow"><div class="cdot"></div><div><div class="cname">Federated Learning for AI — 5-day FDP Program</div><div class="corg">MSRIT · Aug 2025</div></div></div>
-        <div class="crow"><div class="cdot"></div><div><div class="cname">Drone Systems &amp; Control · Microrobotics · Rapid Manufacturing</div><div class="corg">NPTEL · Jul–Oct 2025</div></div></div>
-        <div class="crow"><div class="cdot"></div><div><div class="cname">IoT &amp; Industrial Applications — EICT FDP Certificate</div><div class="corg">IIT Roorkee · Apr 2025</div></div></div>
-        <div class="crow"><div class="cdot"></div><div><div class="cname">Python · Prompt Engineering · Data Science · AI · NLP</div><div class="corg">Infosys Springboard · Jun 2025</div></div></div>
-        <div class="crow"><div class="cdot" style="background:var(--gold2)"></div><div><div class="cname">Aerospace Systems — Aircraft Design &amp; Avionics</div><div class="corg">HAL · Jun 2019</div></div></div>
-      </div>
+    <div class="edu-card">
+      <div class="edu-year">2016 — 2020</div>
+      <div class="edu-degree">B.E. – Electrical &amp; Electronics Engineering</div>
+      <div class="edu-school">Basaveshwar Engineering College, Bagalkot</div>
+      <div class="edu-badges"><span class="edu-badge">CGPA 8.58/10</span><span class="edu-badge">Second Rank</span></div>
     </div>
   </div>
-</div>
 
-<!-- CONTACT -->
-<div class="sw alt" id="contact">
-  <div class="si">
-    <div class="sh"><span class="sn">06</span><h2 class="st">Get In Touch</h2><div class="sl"></div></div>
-    <div class="cbox">
-      <div>
-        <div class="ch">Let's build something <em>intelligent</em> together.</div>
-        <p class="cs">I'm actively seeking roles in AI Engineering, Computer Vision, Robotics, or Generative AI. If you think I'd be a good fit for your team, I'd love to connect.</p>
-      </div>
-      <div class="cl-list">
+  <p class="sec-label" style="margin-bottom:16px">Publication</p>
+  <div class="pub-card" style="margin-bottom:40px">
+    <div class="pub-venue">IEEE ICKECS-2026 · Conference Paper · Presented</div>
+    <div class="pub-title">"Automated Quality Inspection and Counting Systems for Pharmaceutical Vials: A Technology Review and Future Directions"</div>
+    <div class="tags" style="margin-bottom:10px"><span class="tag">AI Defect Detection</span><span class="tag">Multi-Object Tracking</span><span class="tag">Quality Assurance</span></div>
+    <div class="pub-note">Accepted &amp; presented at IEEE ICKECS-2026</div>
+  </div>
 
-        <!-- EMAIL -->
-        <div class="clink" style="cursor:default;">
-          <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></div>
-          <span id="contact-email">gsmvjp@gmail.com</span>
-        </div>
+  <p class="sec-label" style="margin-bottom:16px">Certificates &amp; Certifications</p>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-issuer">IBM</div><div class="cert-name">Machine Learning with Python – Developer Badge Level-1</div><div class="cert-date">Jun 2025</div></div>
+    <div class="cert-card"><div class="cert-issuer">Microsoft &amp; UpGrad</div><div class="cert-name">Generative AI Foundations</div><div class="cert-date">Jul 2025</div></div>
+    <div class="cert-card"><div class="cert-issuer">Celonis</div><div class="cert-name">Process Mining Fundamentals – Badge + Certificate</div><div class="cert-date">Mar 2026</div></div>
+    <div class="cert-card"><div class="cert-issuer">NPTEL · Certification</div><div class="cert-name">Drone Systems &amp; Control</div><div class="cert-date">2025</div></div>
+    <div class="cert-card"><div class="cert-issuer">Infosys</div><div class="cert-name">Data Science &amp; NLP</div><div class="cert-date">Jun 2025</div></div>
+    <div class="cert-card"><div class="cert-issuer">IIT Roorkee</div><div class="cert-name">IoT &amp; Industrial Applications – EICT FDP</div><div class="cert-date">Apr 2025</div></div>
+  </div>
+</section>
 
-        <!-- PHONE -->
-        <a href="tel:+917353960968" class="clink">
-          <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.35 2 2 0 0 1 3.53 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-          <span>+91 73539 60968</span>
-        </a>
-
-        <!-- LINKEDIN -->
-        <a href="https://www.linkedin.com/in/geeta-math-128874353" target="_blank" class="clink">
-          <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--gold)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
-          <span>geeta-math (LinkedIn)</span>
-        </a>
-
-      </div>
-    </div>
+<div class="contact-section" id="contact">
+  <h2>Let's build something <em>intelligent</em> together</h2>
+  <p class="contact-sub">Actively seeking AI Engineer, MLOps, and Analyst roles in Bangalore. Immediately available to join.</p>
+  <div class="contact-links">
+    <a href="mailto:gsmvjp@gmail.com" class="contact-link"><i class="ti ti-mail"></i> gsmvjp@gmail.com</a>
+    <a href="https://www.linkedin.com/in/geeta-math-128874353/" class="contact-link" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/geetamath" class="contact-link" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+    <a href="tel:+917353960968" class="contact-link"><i class="ti ti-phone"></i> +91 73539 60968</a>
   </div>
 </div>
 
 <footer>
-  <span>© 2025 Geeta Siddramayya Math · Bangalore, India</span>
-  <span>SAP Analyst · AI Engineer · Robotics · Computer Vision</span>
+  © 2026 Geeta Siddramayya Math · Bangalore, India &nbsp;·&nbsp; AI Engineer · Computer Vision · Agentic AI
 </footer>
 
-<script>
-(function(){
-  var u='gsmvjp', d='gmail', t='com';
-  var e = u + '@' + d + '.' + t;
-  var h = document.getElementById('hero-email');
-  var c = document.getElementById('contact-email');
-  if(h) h.textContent = e;
-  if(c) c.textContent = e;
-})();
-</script>
-
-
-
-</body></html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+</body>
+</html>
