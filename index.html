@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Geeta Siddramayya Math — AI Engineer</title>
+<title>Geeta Siddramayya Math — AI/ML Engineer & SAP Analyst</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -89,6 +89,17 @@ nav {
   transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--brown); }
+.email-toast {
+  position: fixed; top: 76px; right: 24px; z-index: 200;
+  background: var(--brown); color: #fff;
+  padding: 10px 20px; border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  box-shadow: 0 8px 24px rgba(44,31,18,0.25);
+  opacity: 0; transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.email-toast.show { opacity: 1; transform: translateY(0); }
 
 /* HERO */
 .hero {
@@ -271,6 +282,10 @@ section { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
 .proj-badge { font-size: 10px; padding: 2px 10px; border-radius: 100px; background: rgba(184,150,90,0.1); color: var(--gold); border: 1px solid var(--border2); margin-left: 8px; }
 .proj-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
 .proj-metric { display: inline-flex; align-items: center; gap: 5px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--gold); background: rgba(184,150,90,0.08); padding: 3px 10px; border-radius: 6px; margin-bottom: 12px; margin-right: 6px; }
+.proj-links { display: flex; gap: 12px; margin-top: 4px; }
+.proj-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--gold); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.proj-link:hover { color: var(--brown); }
+.proj-badge-hobby { font-size: 10px; padding: 2px 10px; border-radius: 100px; background: rgba(140,122,101,0.12); color: var(--text3); border: 1px solid var(--border); margin-left: 8px; }
 
 /* EXPERIENCE TIMELINE */
 .timeline { position: relative; padding-left: 32px; }
@@ -387,8 +402,19 @@ footer {
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="mailto:gsmvjp@gmail.com" class="nav-cta">Hire Me</a>
+  <a href="mailto:gsmvjp@gmail.com" class="nav-cta" id="hireMeBtn" title="gsmvjp@gmail.com">Hire Me</a>
 </nav>
+<div class="email-toast" id="emailToast">Email copied: gsmvjp@gmail.com</div>
+<script>
+document.getElementById('hireMeBtn').addEventListener('click', function() {
+  var toast = document.getElementById('emailToast');
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText('gsmvjp@gmail.com').catch(function(){});
+  }
+  toast.classList.add('show');
+  setTimeout(function() { toast.classList.remove('show'); }, 2500);
+});
+</script>
 
 <section class="hero" id="home">
   <div class="hero-sparkles">
@@ -400,8 +426,8 @@ footer {
   <div class="avatar">GM</div>
   <div class="open-badge"><span class="open-dot"></span>Open to Work</div>
   <h1>Geeta <em>Siddramayya</em> Math</h1>
-  <p class="hero-role">AI Engineer &nbsp;·&nbsp; Agentic AI &amp; LLMs &nbsp;·&nbsp; Computer Vision &nbsp;·&nbsp; MLOps</p>
-  <p class="hero-desc">M.Tech (Robotics &amp; AI) engineer building intelligent systems at the intersection of deep learning, computer vision, and agentic AI. IEEE Paper Publisher. Immediately available to join.</p>
+  <p class="hero-role">AI/ML Engineer &nbsp;·&nbsp; SAP Analyst &nbsp;·&nbsp; Agentic AI &amp; LLMs &nbsp;·&nbsp; Computer Vision</p>
+  <p class="hero-desc">M.Tech (Robotics &amp; AI) engineer with hands-on SAP enterprise experience, building intelligent systems at the intersection of deep learning, computer vision, and agentic AI. IEEE Paper Publisher. Open to AI/ML Engineer and SAP Analyst roles. Immediately available to join.</p>
   <div class="hero-btns">
     <a href="#projects" class="btn-gold">View Projects</a>
     <a href="#contact" class="btn-outline-gold">Get in Touch</a>
@@ -421,9 +447,10 @@ footer {
   <div class="sec-divider"></div>
   <div class="about-grid">
     <div class="about-text">
-      <p>I am an <strong>AI Engineer and Robotics enthusiast</strong>, completing my M.Tech in Robotics &amp; Artificial Intelligence at M.S. Ramaiah Institute of Technology, Bangalore, with a CGPA of <strong>9.41/10</strong>.</p>
-      <p>My recent work at <strong>Tata Communications (Novamesh)</strong> involved building cloud-native agentic AI products — RAG pipelines, LLM APIs, and multi-agent orchestration for enterprise use cases.</p>
-      <p>Before my masters, I spent <strong>2 years at TCS</strong> as an SAP Basis Analyst — experience that taught me reliability, enterprise-scale thinking, and the value of clean systems.</p>
+      <p>I'm an engineer with a <strong>dual background in AI/ML and SAP enterprise systems</strong>, currently completing my M.Tech in Robotics &amp; Artificial Intelligence at M.S. Ramaiah Institute of Technology, Bangalore, with a CGPA of <strong>9.41/10</strong>.</p>
+      <p>On the AI side, my recent work at <strong>Tata Communications (Novamesh)</strong> involved building cloud-native agentic AI products — RAG pipelines, LLM APIs, and multi-agent orchestration for enterprise use cases.</p>
+      <p>On the enterprise systems side, I spent <strong>2 years at TCS</strong> as an SAP Basis Analyst, managing cloud infrastructure and SLA-critical operations for enterprise clients — real, hands-on experience I bring directly into any SAP Analyst role.</p>
+      <p>I'm actively open to both <strong>AI/ML Engineer</strong> and <strong>SAP Analyst</strong> positions, and happy to bring either skill set — or both — to the right team.</p>
     </div>
     <div class="about-facts">
       <div class="fact"><i class="ti ti-map-pin fact-icon"></i><div class="fact-text"><strong>Location</strong>Bangalore, India</div></div>
@@ -444,7 +471,7 @@ footer {
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-brain"></i></div>
       <div class="skill-name">AI &amp; Deep Learning</div>
-      <div class="tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span><span class="tag">NLP</span><span class="tag">Scikit-learn</span><span class="tag">ML</span></div>
+      <div class="tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span><span class="tag">NLP</span><span class="tag">Hugging Face</span><span class="tag">Scikit-learn</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-eye"></i></div>
@@ -453,23 +480,28 @@ footer {
     </div>
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-robot"></i></div>
-      <div class="skill-name">Agentic AI &amp; LLMs</div>
-      <div class="tags"><span class="tag">RAG</span><span class="tag">LLM APIs</span><span class="tag">Groq</span><span class="tag">Llama 3.3</span><span class="tag">Multi-Agent</span><span class="tag">Prompt Eng.</span></div>
+      <div class="skill-name">Generative &amp; Agentic AI</div>
+      <div class="tags"><span class="tag">Generative AI</span><span class="tag">RAG</span><span class="tag">LLM APIs</span><span class="tag">Groq</span><span class="tag">Llama</span><span class="tag">LangGraph</span><span class="tag">Agentic AI</span><span class="tag">Multi-Agent Orchestration</span><span class="tag">Prompt Engineering</span><span class="tag">AI Chatbots</span><span class="tag">Vector Database</span><span class="tag">FAISS</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-cloud"></i></div>
       <div class="skill-name">MLOps &amp; Cloud</div>
-      <div class="tags"><span class="tag">Docker</span><span class="tag">GCP</span><span class="tag">Git</span><span class="tag">REST APIs</span><span class="tag">Power BI</span><span class="tag">PostgreSQL</span></div>
+      <div class="tags"><span class="tag">Docker</span><span class="tag">GCP</span><span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">REST APIs</span><span class="tag">Power BI</span><span class="tag">PostgreSQL</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-code"></i></div>
-      <div class="skill-name">Programming</div>
-      <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">React</span><span class="tag">C</span><span class="tag">MATLAB</span></div>
+      <div class="skill-name">Programming &amp; APIs</div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQL</span><span class="tag">REST API</span><span class="tag">React</span><span class="tag">C</span><span class="tag">MATLAB</span></div>
     </div>
     <div class="skill-card">
       <div class="skill-icon"><i class="ti ti-chart-bar"></i></div>
       <div class="skill-name">Data &amp; Analysis</div>
       <div class="tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Statistical Analysis</span><span class="tag">Excel</span><span class="tag">Power BI</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="ti ti-server-2"></i></div>
+      <div class="skill-name">SAP &amp; Enterprise Systems</div>
+      <div class="tags"><span class="tag">SAP Basis</span><span class="tag">SAP Cloud Infrastructure</span><span class="tag">System Monitoring</span><span class="tag">SLA Management</span><span class="tag">PowerShell Automation</span><span class="tag">Database Optimization</span></div>
     </div>
   </div>
 </section>
@@ -488,6 +520,9 @@ footer {
       <p class="proj-desc">Automated vial detection and defect classification system replacing manual inspection in pharmaceutical production. Built high-throughput real-time inference pipeline with precise product traceability.</p>
       <div><span class="proj-metric"><i class="ti ti-chart-line" style="font-size:12px"></i> 96.9% mAP@0.5</span><span class="proj-metric"><i class="ti ti-check" style="font-size:12px"></i> Zero double-counting</span></div>
       <div class="tags"><span class="tag">YOLOv11</span><span class="tag">OpenCV</span><span class="tag">BoT-SORT</span><span class="tag">Python</span><span class="tag">Deep Learning</span></div>
+      <div class="proj-links">
+        <a href="https://vialvision-ai-pharma.streamlit.app/" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-external-link"></i> Live App</a>
+      </div>
     </div>
     <div class="proj-card">
       <div class="proj-header">
@@ -497,15 +532,33 @@ footer {
       <p class="proj-desc">Full-stack AI web app answering natural language queries on live Monday.com project data using Groq LLM. Engineered token compression pipeline and PostgreSQL query history storage.</p>
       <div><span class="proj-metric"><i class="ti ti-arrow-down" style="font-size:12px"></i> 60K → 5K tokens</span><span class="proj-metric"><i class="ti ti-world" style="font-size:12px"></i> Live deployed</span></div>
       <div class="tags"><span class="tag">Groq LLM</span><span class="tag">Llama 3.3 70B</span><span class="tag">GraphQL</span><span class="tag">PostgreSQL</span><span class="tag">Replit</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/geetamath/monday-bi-agent" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github"></i> GitHub</a>
+        <a href="https://insight-engine--gsmvjp.replit.app/" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-external-link"></i> Live App</a>
+      </div>
     </div>
     <div class="proj-card">
       <div class="proj-header">
-        <span class="proj-title">Real-Time Drone Detection &amp; Tracking</span>
-        <span class="proj-year">2025</span>
+        <span class="proj-title">3GPP RAG Chatbot <span class="proj-badge">Evidence-Gated</span></span>
+        <span class="proj-year">2026</span>
       </div>
-      <p class="proj-desc">End-to-end surveillance pipeline developed at CMTI, Govt. of India. Robust real-world performance across varying drone sizes, lighting conditions, and dynamic environments.</p>
-      <div><span class="proj-metric"><i class="ti ti-chart-line" style="font-size:12px"></i> 82.5% mAP@0.5</span><span class="proj-metric"><i class="ti ti-minus" style="font-size:12px"></i> 40% fewer false positives</span></div>
-      <div class="tags"><span class="tag">YOLOv8</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Kalman Filter</span><span class="tag">MOT</span></div>
+      <p class="proj-desc">Full-stack RAG chatbot answering questions on real 3GPP telecom specifications (TS 23.501, TS 23.502) with a two-checkpoint anti-hallucination design: a pre-generation evidence gate refuses low-confidence answers, and a post-generation claim verifier strips any unsupported statement before it's shown.</p>
+      <div><span class="proj-metric"><i class="ti ti-shield-check" style="font-size:12px"></i> Near-zero hallucination</span><span class="proj-metric"><i class="ti ti-world" style="font-size:12px"></i> Live deployed</span></div>
+      <div class="tags"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">Groq LLM</span><span class="tag">Hybrid Retrieval</span><span class="tag">Docker</span><span class="tag">React</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/geetamath/3gpp_rag_chatbot" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-github"></i> GitHub</a>
+        <a href="https://threegpp-rag-chatbot-6yy4.onrender.com" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-external-link"></i> Live App</a>
+      </div>
+    </div>
+    <div class="proj-card hobby">
+      <div class="proj-header">
+        <span class="proj-title">Ocean Echo Facts <span class="proj-badge-hobby">Hobby Project</span></span>
+        <span class="proj-year">2026</span>
+      </div>
+      <p class="proj-desc">A small, fun web app sharing bite-sized ocean facts — built as a quick side project outside of coursework and internships, just for the enjoyment of shipping something simple end-to-end.</p>
+      <div class="proj-links">
+        <a href="https://ocean-echo-facts.base44.app" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="ti ti-external-link"></i> Live App</a>
+      </div>
     </div>
   </div>
 </section>
@@ -648,7 +701,7 @@ footer {
     </div>
 
 <footer>
-  © 2026 Geeta Siddramayya Math · Bangalore, India &nbsp;·&nbsp; AI Engineer · Computer Vision · Agentic AI
+  © 2026 Geeta Siddramayya Math · Bangalore, India &nbsp;·&nbsp; AI/ML Engineer · SAP Analyst · Agentic AI
 </footer>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
